@@ -13,7 +13,7 @@ Ensure you have the following installed:
 1. Clone the repository:
    ```sh
    git clone https://github.com/aniketng876/trans-api
-   cd laravel-api
+   cd trans-api
    ```
 2. Install dependencies:
    ```sh
