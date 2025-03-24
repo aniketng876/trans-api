@@ -13,7 +13,7 @@ class ProductRepository implements ProductRepositoryInterface
     public function getById(int $id): ?ProductDAO
     {
         $product = Product::find($id);
-        return $product ? new ProductDAO($product->id, $product->name, $product->description, $product->price, $product->category_id) : null;
+        return $product ? new ProductDAO($product->id, $product->name, $product->description, $product->sku, $product->price, $product->category_id) : null;
     }
 
     public function getAll(?int $categoryId = null, ?string $search = null): array
@@ -42,11 +42,12 @@ class ProductRepository implements ProductRepositoryInterface
         $product = Product::create([
             'name' => $productDAO->name,
             'description' => $productDAO->description,
+            'sku' => $productDAO->sku,
             'price' => $productDAO->price,
             'category_id' => $productDAO->category_id
         ]);
 
-        return new ProductDAO($product->id, $product->name, $product->description, $product->price, $product->category_id);
+        return new ProductDAO($product->id, $product->name, $product->description,$product->sku, $product->price, $product->category_id);
     }
 
     public function update(ProductDAO $productDAO, int $id): ?ProductDAO
@@ -61,7 +62,7 @@ class ProductRepository implements ProductRepositoryInterface
             'category_id' => $productDAO->category_id
         ]);
 
-        return new ProductDAO($product->id, $product->name, $product->description, $product->price, $product->category_id);
+        return new ProductDAO($product->id, $product->name, $product->description,$product->sku, $product->price, $product->category_id);
     }
 
     public function delete(int $id): bool

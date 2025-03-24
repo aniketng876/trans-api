@@ -10,6 +10,7 @@ use Exception;
 
 use App\Services\ProductService;
 use App\BO\ProductBO;
+use App\DAO\ProductDAO;
 use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
@@ -51,7 +52,19 @@ class ProductController extends Controller
     {
         try {
 
-            $productBO = new ProductBO($request->validated());
+            $validated = $request->validated();
+
+            // Create a ProductDAO instance
+            $productDAO = new ProductDAO(
+                0,
+                (string) $validated['name'],
+                (string) $validated['description'],
+                (string) $validated['sku'],
+                (float) $validated['price'],
+                (int) $validated['category_id']
+            );
+
+            $productBO = new ProductBO($productDAO);
             $product = $this->productService->createProduct($productBO);
 
             return response()->json(['success' => true, 'data' => $product], 201);
@@ -65,7 +78,19 @@ class ProductController extends Controller
     public function update(ProductRequest $request, int $id): JsonResponse
     {
         try {
-            $productBO = new ProductBO($request->validated());
+            $validated = $request->validated();
+
+            // Create a ProductDAO instance
+            $productDAO = new ProductDAO(
+                0,
+                (string) $validated['name'],
+                (string) $validated['description'],
+                (string) $validated['sku'],
+                (float) $validated['price'],
+                (int) $validated['category_id']
+            );
+
+            $productBO = new ProductBO($productDAO);
             $product = $this->productService->updateProduct($productBO, $id);
 
             if (!$product) {

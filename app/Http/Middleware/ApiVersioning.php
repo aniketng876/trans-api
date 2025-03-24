@@ -21,7 +21,6 @@ class ApiVersioning
             return response()->json(['error' => 'Invalid API version'], 400);
         }
 
-        // Set version dynamically
         app()->setLocale($version);
 
         return $next($request);

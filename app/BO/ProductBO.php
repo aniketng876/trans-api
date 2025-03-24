@@ -13,6 +13,11 @@ class ProductBO
         $this->productDAO = $productDAO;
     }
 
+    public function getSku(): string
+    {
+        return $this->productDAO->getSku();
+    }
+
     public function getId(): int
     {
         return $this->productDAO->getId();
@@ -37,7 +42,7 @@ class ProductBO
     {
         return $this->productDAO->getCategoryId();
     }
-    
+
     public function applyDiscount(float $discountPercent): void
     {
         $this->productDAO->price -= ($this->productDAO->price * $discountPercent / 100);

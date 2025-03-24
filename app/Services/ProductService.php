@@ -23,6 +23,7 @@ class ProductService
             0,
             $productBO->getName(),
             $productBO->getDescription(),
+            $productBO->getSku(),
             $productBO->getPrice(),
             $productBO->getCategoryId()
         );
@@ -38,6 +39,7 @@ class ProductService
             $id, 
             $productBO->getName(),
             $productBO->getDescription(),
+            $productBO->getSku(),
             $productBO->getPrice(),
             $productBO->getCategoryId()
         );
