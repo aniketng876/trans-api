@@ -12,7 +12,7 @@ Ensure you have the following installed:
 ### Installation Steps
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-repo/laravel-api.git
+   git clone https://github.com/aniketng876/trans-api
    cd laravel-api
    ```
 2. Install dependencies:
